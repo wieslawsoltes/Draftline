@@ -1,0 +1,50 @@
+name: Import Draftline source distribution
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.bootstrap/**'
+      - '.github/workflows/import-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: draftline-source-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Verify and extract the original source distribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .bootstrap/source.tar.xz.* > "$RUNNER_TEMP/draftline-source.tar.xz"
+          echo "6fdd7a0d92d406f0fdf399407a7034291b44aee3776577e957e11a1a7a366895  $RUNNER_TEMP/draftline-source.tar.xz" | sha256sum --check --strict
+          tar -xJf "$RUNNER_TEMP/draftline-source.tar.xz" --no-same-owner
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test CAD geometry and DXF handling
+        run: npm test
+      - name: Commit complete source and remove transfer files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -r .bootstrap
+          git add --all
+          git commit -m "Import complete Draftline CAD source distribution"
+          git push origin HEAD:main
