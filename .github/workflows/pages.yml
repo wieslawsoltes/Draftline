@@ -1,0 +1,84 @@
+name: Deploy Draftline to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Test and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in src/*.js tests/*.mjs; do
+            node --check "$file"
+          done
+      - name: Test CAD geometry and DXF import/export
+        run: npm test
+      - name: Build self-contained HTML distribution
+        run: python3 tools/build-single.py
+      - name: Validate generated JavaScript
+        run: node --check dist-app.js
+      - name: Stage static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp index.html style.css Draftline.html LICENSE THIRD_PARTY_NOTICES.md _site/
+          cp -R src samples _site/
+          touch _site/.nojekyll
+          printf '{"commit":"%s","repository":"%s"}\n' "$GITHUB_SHA" "$GITHUB_REPOSITORY" > _site/version.json
+          test -s _site/index.html
+          test -s _site/src/app.js
+          test -s _site/src/dxf-worker.js
+          test -s _site/Draftline.html
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+          retention-days: 7
+
+  deploy:
+    name: Publish site
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v5
+      - name: Record deployment URL
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: printf '### Draftline deployed\n\n%s\n' "$PAGE_URL" >> "$GITHUB_STEP_SUMMARY"
