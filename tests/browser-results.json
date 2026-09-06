@@ -1,0 +1,145 @@
+{
+  "backend": "Canvas 2D",
+  "memory_mode": true,
+  "checks": 34,
+  "passed": 34,
+  "errors": [],
+  "results": [
+    {
+      "test": "Initial sample renders 308 entities",
+      "passed": true
+    },
+    {
+      "test": "Render backend is reported truthfully",
+      "passed": true
+    },
+    {
+      "test": "No initial JavaScript errors",
+      "passed": true
+    },
+    {
+      "test": "Exact command-line LINE insertion",
+      "passed": true
+    },
+    {
+      "test": "Exact model coordinates",
+      "passed": true
+    },
+    {
+      "test": "Undo removes line",
+      "passed": true
+    },
+    {
+      "test": "Redo restores line",
+      "passed": true
+    },
+    {
+      "test": "Numeric circle radius",
+      "passed": true
+    },
+    {
+      "test": "Move uses relative displacement",
+      "passed": true
+    },
+    {
+      "test": "Copy creates independent geometry",
+      "passed": true
+    },
+    {
+      "test": "Scale preserves center and doubles radius",
+      "passed": true
+    },
+    {
+      "test": "Rectangle is a closed polyline",
+      "passed": true
+    },
+    {
+      "test": "Hatch uses selected closed boundary",
+      "passed": true
+    },
+    {
+      "test": "Explode removes source polyline",
+      "passed": true
+    },
+    {
+      "test": "Explode creates four lines",
+      "passed": true
+    },
+    {
+      "test": "Polyline closes using C",
+      "passed": true
+    },
+    {
+      "test": "Aligned dimension creates native entity",
+      "passed": true
+    },
+    {
+      "test": "3-point arc has correct radius",
+      "passed": true
+    },
+    {
+      "test": "Text dialog inserts editable TEXT",
+      "passed": true
+    },
+    {
+      "test": "Layer dialog creates and activates layer",
+      "passed": true
+    },
+    {
+      "test": "Grid toggle updates renderer",
+      "passed": true
+    },
+    {
+      "test": "Ortho toggle updates drawing constraint",
+      "passed": true
+    },
+    {
+      "test": "View tab exposes navigation tools",
+      "passed": true
+    },
+    {
+      "test": "Dark UI theme applies",
+      "passed": true
+    },
+    {
+      "test": "SVG export contains vector paths and text",
+      "passed": true
+    },
+    {
+      "test": "DXF export is a real DXF document",
+      "passed": true
+    },
+    {
+      "test": "Browser DXF import round-trips entity count",
+      "passed": true
+    },
+    {
+      "test": "Pointer selection selects CAD geometry",
+      "passed": true
+    },
+    {
+      "test": "Mouse-wheel zoom is anchored in drawing viewport",
+      "passed": true
+    },
+    {
+      "test": "Middle-button panning updates camera",
+      "passed": true
+    },
+    {
+      "test": "Mobile viewport has no horizontal document overflow",
+      "passed": true
+    },
+    {
+      "test": "Mobile layout defaults to unobstructed canvas",
+      "passed": true
+    },
+    {
+      "test": "Mobile layer drawer opens",
+      "passed": true
+    },
+    {
+      "test": "No JavaScript exceptions across tested workflows",
+      "passed": true
+    }
+  ]
+}

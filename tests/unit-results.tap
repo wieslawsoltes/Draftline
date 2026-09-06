@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: LINE geometry preserves exact endpoints
+ok 1 - LINE geometry preserves exact endpoints
+  ---
+  duration_ms: 6.727383
+  type: 'test'
+  ...
+# Subtest: Counterclockwise bulge is a lower semicircle from left to right
+ok 2 - Counterclockwise bulge is a lower semicircle from left to right
+  ---
+  duration_ms: 4.285153
+  type: 'test'
+  ...
+# Subtest: Negative bulge is the upper semicircle
+ok 3 - Negative bulge is the upper semicircle
+  ---
+  duration_ms: 0.499016
+  type: 'test'
+  ...
+# Subtest: Circle circumference and area are analytic
+ok 4 - Circle circumference and area are analytic
+  ---
+  duration_ms: 0.514326
+  type: 'test'
+  ...
+# Subtest: Bulged closed-polyline area includes exact circular segment
+ok 5 - Bulged closed-polyline area includes exact circular segment
+  ---
+  duration_ms: 0.678588
+  type: 'test'
+  ...
+# Subtest: Polygon area remains accurate at survey coordinates
+ok 6 - Polygon area remains accurate at survey coordinates
+  ---
+  duration_ms: 0.335349
+  type: 'test'
+  ...
+# Subtest: 3-point arc chooses the sweep through the middle point
+ok 7 - 3-point arc chooses the sweep through the middle point
+  ---
+  duration_ms: 0.75688
+  type: 'test'
+  ...
+# Subtest: Circumcenter rebases coordinates before solving
+ok 8 - Circumcenter rebases coordinates before solving
+  ---
+  duration_ms: 0.239979
+  type: 'test'
+  ...
+# Subtest: Collinear arc is rejected
+ok 9 - Collinear arc is rejected
+  ---
+  duration_ms: 0.936665
+  type: 'test'
+  ...
+# Subtest: Reflection reverses bulge orientation
+ok 10 - Reflection reverses bulge orientation
+  ---
+  duration_ms: 2.117706
+  type: 'test'
+  ...
+# Subtest: Rotation and translation preserve geometry
+ok 11 - Rotation and translation preserve geometry
+  ---
+  duration_ms: 0.524766
+  type: 'test'
+  ...
+# Subtest: Uniform scaling preserves analytic ellipses
+ok 12 - Uniform scaling preserves analytic ellipses
+  ---
+  duration_ms: 0.292781
+  type: 'test'
+  ...
+# Subtest: Rational quadratic spline evaluates a quarter circle
+ok 13 - Rational quadratic spline evaluates a quarter circle
+  ---
+  duration_ms: 6.241598
+  type: 'test'
+  ...
+# Subtest: BVH query rejects unrelated entities
+ok 14 - BVH query rejects unrelated entities
+  ---
+  duration_ms: 0.547473
+  type: 'test'
+  ...
+# Subtest: Line intersection returns segment parameters
+ok 15 - Line intersection returns segment parameters
+  ---
+  duration_ms: 0.32447
+  type: 'test'
+  ...
+# Subtest: Entity transactions undo and redo insertions
+ok 16 - Entity transactions undo and redo insertions
+  ---
+  duration_ms: 1.683
+  type: 'test'
+  ...
+# Subtest: Entity transactions retain previous state across updates
+ok 17 - Entity transactions retain previous state across updates
+  ---
+  duration_ms: 0.687207
+  type: 'test'
+  ...
+# Subtest: Layer transaction is undoable
+ok 18 - Layer transaction is undoable
+  ---
+  duration_ms: 0.560593
+  type: 'test'
+  ...
+# Subtest: DXF line, circle, and arc round-trip
+ok 19 - DXF line, circle, and arc round-trip
+  ---
+  duration_ms: 11.085963
+  type: 'test'
+  ...
+# Subtest: DXF bulge vertices and closure round-trip
+ok 20 - DXF bulge vertices and closure round-trip
+  ---
+  duration_ms: 1.303679
+  type: 'test'
+  ...
+# Subtest: DXF linear and aligned dimensions retain type and geometry
+ok 21 - DXF linear and aligned dimensions retain type and geometry
+  ---
+  duration_ms: 56.51645
+  type: 'test'
+  ...
+# Subtest: DXF polyline hatch boundary round-trip
+ok 22 - DXF polyline hatch boundary round-trip
+  ---
+  duration_ms: 3.045049
+  type: 'test'
+  ...
+# Subtest: Unicode TEXT and multiline MTEXT round-trip
+ok 23 - Unicode TEXT and multiline MTEXT round-trip
+  ---
+  duration_ms: 2.965681
+  type: 'test'
+  ...
+# Subtest: Legacy POLYLINE / VERTEX entities are assembled
+ok 24 - Legacy POLYLINE / VERTEX entities are assembled
+  ---
+  duration_ms: 0.873904
+  type: 'test'
+  ...
+# Subtest: Nested INSERT base-point, rotation and layer inheritance
+ok 25 - Nested INSERT base-point, rotation and layer inheritance
+  ---
+  duration_ms: 0.99888
+  type: 'test'
+  ...
+# Subtest: Unknown entities produce explicit import warnings
+ok 26 - Unknown entities produce explicit import warnings
+  ---
+  duration_ms: 0.550149
+  type: 'test'
+  ...
+# Subtest: Binary DXF is explicitly rejected
+ok 27 - Binary DXF is explicitly rejected
+  ---
+  duration_ms: 1.132784
+  type: 'test'
+  ...
+# Subtest: Malformed group code is rejected
+ok 28 - Malformed group code is rejected
+  ---
+  duration_ms: 0.389037
+  type: 'test'
+  ...
+# Subtest: Sample drawing exports and imports all 308 model-space entities
+ok 29 - Sample drawing exports and imports all 308 model-space entities
+  ---
+  duration_ms: 56.187178
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 537.72597
